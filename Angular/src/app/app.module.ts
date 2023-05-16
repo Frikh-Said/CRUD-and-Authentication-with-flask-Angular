@@ -6,6 +6,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CarComponent } from './car/car.component';
 import { CarsComponent } from './cars/cars.component';
+import {MatTableModule} from '@angular/material/table';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -18,6 +21,8 @@ import { CarsComponent } from './cars/cars.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    MatTableModule,
+    BrowserAnimationsModule,
   ],
   providers: [],    //pour declarer les services
   bootstrap: [AppComponent]   //pour specifier qu'il est le root component
