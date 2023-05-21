@@ -1,0 +1,36 @@
+<!--
+<p>Car Creation</p> <br>
+
+<label>Model</label>
+<input type ="text"  [(ngModel)]="model" /> <br>
+
+<label>HP</label>
+<input type ="number" [(ngModel)]="hp"/><br>
+
+<label>Marque</label>
+<input type ="text" [(ngModel)]="marque"/><br>
+
+<button (click)="saveMe()" > Save</button>
+-->
+<div mat-dialog-title class="title">Car {{data?'Updating':'Creation'}}</div>
+<div *ngIf="errorMsg">{{errorMsg}}</div>
+<form [formGroup]="AddCarForm" (ngSubmit)="OnFormSave()">
+    <div mat-dialog-content class="content">
+        <mat-form-field appearance="outline">
+            <mat-label>Model</mat-label>
+            <input matInput type="text" placeholder="Enter model" formControlName="model">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>HP</mat-label> 
+            <input matInput type="text" placeholder="Enter hp" formControlName="hp">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Marque</mat-label>
+            <input matInput type="text" placeholder="Enter marque" formControlName="marque">
+        </mat-form-field>
+    </div>
+
+    <div mat-dialog-actions class="action">
+        <button mat-raised-button type="submit">{{data?'Update':'Save'}}</button>
+    </div>
+</form>

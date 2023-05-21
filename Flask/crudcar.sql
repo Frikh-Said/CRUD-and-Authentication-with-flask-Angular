@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mer. 17 mai 2023 à 02:52
+-- Généré le : dim. 21 mai 2023 à 23:10
 -- Version du serveur : 10.4.27-MariaDB
 -- Version de PHP : 8.2.0
 
@@ -40,8 +40,8 @@ CREATE TABLE `car` (
 --
 
 INSERT INTO `car` (`id_car`, `model`, `hp`, `marque`, `user_id`) VALUES
-(7, 'said', '123456789', 'aaaaaaaaaa', 1),
-(8, 'ccccccccc', 'cccccccccccc', 'ccccccccccccccc', 1);
+(7, 'DEUSTER', '11111', 'dacia', 1),
+(8, 'SANDERO', '222222', 'DACIA', 1);
 
 -- --------------------------------------------------------
 

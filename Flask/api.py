@@ -1,6 +1,7 @@
 import bcrypt
 from flask import jsonify
 from flask import Flask, request  , jsonify
+import flask
 import myCar as car
 import myUser as user
 from flask_cors import CORS, cross_origin
@@ -49,20 +50,19 @@ def saveCar():
 
 ######################################################
 @app.route('/cars')
-# @jwt_required()
+#@jwt_required()
 def cars():
-
-    mylist=[]
-    user_id = 0
-    myCursor = mydb.cursor()
-    # myCursor.execute("SELECT model , hp , marque FROM car WHERE user_id=%s",(user_id,))
-    myCursor.execute("SELECT id_car ,model , hp , marque FROM car")
-    carRows = myCursor.fetchall()
-    for x in carRows:
-        mylist.append(car.Car(x[0],x[1],x[2],x[3],user_id).__dict__)
-    response = jsonify(mylist)
-    response.status_code = 200
-    return response
+    try:
+        #user_id = get_jwt_identity()
+        myCursor = mydb.cursor()
+        #myCursor.execute("SELECT model , hp , marque FROM car WHERE user_id=%s",(user_id,))
+        myCursor.execute("SELECT id_car, model , hp , marque FROM car")
+        carRows = myCursor.fetchall()
+        respone = jsonify(carRows)
+        respone.status_code = 200
+        return respone
+    except Exception as e:
+        print(e)
 
 ######################################################
 @app.route('/detailcar/<car_id>')
@@ -120,7 +120,7 @@ def updateCar(id):
     else:
         return 'error'
 ######################################################
-@app.route('/registre', methods=['POST'])
+@app.route('/register', methods=['POST'])
 def registre():
     try:
         args = request.json
@@ -162,9 +162,10 @@ def login():
 
     myCursor.execute("SELECT * FROM user WHERE username=%s",(username,))
     myresult=myCursor.fetchone()
-
+    print(myresult)
     if bcrypt.checkpw(password.encode('utf8'),myresult[2].encode('utf8')):
         access_token = create_access_token(identity=myresult[0])
+     
         return jsonify(access_token=access_token)
     else :
          return "username or password invalid"

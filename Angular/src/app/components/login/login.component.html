@@ -1,0 +1,23 @@
+<div mat-dialog-title class="logo">Login</div>
+<div *ngIf="errorMsg">{{errorMsg}}</div>
+<form [formGroup]="LoginForm" (ngSubmit)="OnFormLogin()">
+    <div mat-dialog-content class="content">
+        <mat-form-field appearance="outline">
+            <mat-label>User_name</mat-label>
+            <input matInput type="text" placeholder="Enter username" formControlName="username">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+        </mat-form-field>
+    </div>
+
+    <div mat-dialog-actions class="action">
+        <button mat-raised-button type="submit">Login</button>
+        <button mat-raised-button mat-dialog-close="true" (click)="openSigneUpForm()">Don't have an account</button>
+    </div>
+</form>

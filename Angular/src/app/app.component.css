@@ -1,0 +1,36 @@
+.mat-toolbar {
+    background-color: #740683;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 16px;
+  }
+  
+  .mat-toolbar a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 16px;
+  }
+  
+  .mat-toolbar button {
+    margin-right: 8px;
+  }
+  
+  .example-spacer {
+    flex: 1;
+  }
+  
+  .button {
+    display: flex;
+  }
+  
+  .button button {
+    margin-right: 8px;
+  }
+  
+  app-cars{
+    padding-top: 200px;
+  }
