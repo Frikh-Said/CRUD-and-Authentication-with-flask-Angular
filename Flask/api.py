@@ -49,18 +49,20 @@ def saveCar():
 
 ######################################################
 @app.route('/cars')
-@jwt_required()
+# @jwt_required()
 def cars():
-    try:
-        user_id = get_jwt_identity()
-        myCursor = mydb.cursor()
-        myCursor.execute("SELECT model , hp , marque FROM car WHERE user_id=%s",(user_id,))
-        carRows = myCursor.fetchall()
-        respone = jsonify(carRows)
-        respone.status_code = 200
-        return respone
-    except Exception as e:
-        print(e)
+
+    mylist=[]
+    user_id = 0
+    myCursor = mydb.cursor()
+    # myCursor.execute("SELECT model , hp , marque FROM car WHERE user_id=%s",(user_id,))
+    myCursor.execute("SELECT id_car ,model , hp , marque FROM car")
+    carRows = myCursor.fetchall()
+    for x in carRows:
+        mylist.append(car.Car(x[0],x[1],x[2],x[3],user_id).__dict__)
+    response = jsonify(mylist)
+    response.status_code = 200
+    return response
 
 ######################################################
 @app.route('/detailcar/<car_id>')

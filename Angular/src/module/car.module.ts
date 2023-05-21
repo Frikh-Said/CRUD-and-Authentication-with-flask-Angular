@@ -3,4 +3,5 @@ export class CarModule {
     public model!: string;
     public hp!: number;
     public marque!: string;
+    public user_id!: number;
 }

@@ -1,4 +1,4 @@
-<p>List of cars </p>
+<!-- <p>List of cars </p>
 
 <table>
 
@@ -17,11 +17,46 @@ id
     </th>
 
 
-<tr  *ngFor="let car of cars">
-    <td>{{car.id_car}}</td>
-    <td>{{car.model}}</td>
-    <td>{{car.hp}}</td>
-    <td>{{car.marque}}</td>
-</tr>
+    <tr *ngFor="let car of cars">
+        <td>{{ car.id_car }}</td>
+        <td>{{ car.model }}</td>
+        <td>{{ car.hp }}</td>
+        <td>{{ car.marque }}</td>
+      </tr>
+  
 
-</table>
+</table> -->
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    <!-- Position Column -->
+    <ng-container matColumnDef="id_car">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let element"> {{element.id_car}} </td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="model">
+      <th mat-header-cell *matHeaderCellDef> model </th>
+      <td mat-cell *matCellDef="let element"> {{element.model}} </td>
+    </ng-container>
+  
+    <!-- Weight Column -->
+    <ng-container matColumnDef="hp">
+      <th mat-header-cell *matHeaderCellDef> hp </th>
+      <td mat-cell *matCellDef="let element"> {{element.hp}} </td>
+    </ng-container>
+  
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="marque">
+      <th mat-header-cell *matHeaderCellDef> marque </th>
+      <td mat-cell *matCellDef="let element"> {{element.marque}} </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  
+  

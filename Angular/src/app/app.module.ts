@@ -8,6 +8,10 @@ import { CarComponent } from './car/car.component';
 import { CarsComponent } from './cars/cars.component';
 import {MatTableModule} from '@angular/material/table';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { LoginComponent } from './login/login.component';
+
 
 
 @NgModule({
@@ -15,14 +19,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppComponent,
     CarComponent,
     CarsComponent,
+    LoginComponent,
   ],
-  imports: [         //pour importer des modules 
+  imports: [    
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
     MatTableModule,
     BrowserAnimationsModule,
+    MatFormFieldModule,     //pour importer des modules 
+    MatPaginatorModule,
   ],
   providers: [],    //pour declarer les services
   bootstrap: [AppComponent]   //pour specifier qu'il est le root component
